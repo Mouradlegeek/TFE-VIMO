@@ -152,32 +152,35 @@ Le thread joystick a un `except Exception: pass` qui masque les erreurs et peut 
 
 ### 3.1 Actions immediates (avant soutenance)
 
-| # | Action | Fichier | Impact |
-|---|--------|---------|--------|
-| 1 | Fix division par zero c_mean | rpm_bridge_node.py:252 | Bug crash |
-| 2 | Fix EMA bias (pas integration) | ekf_node.py:365 | Bug divergence |
-| 3 | Justifier poids Q dans le TFE | chapters/06_ekf_adaptatif.tex | Rigueur |
-| 4 | Documenter parametres empiriques | chapters/06 + annexe_B | Rigueur |
-| 5 | Separer resultats banc/vol | chapters/07_resultats.tex | Clarte |
-| 6 | Reduire "mot de fin" | chapters/08_conclusion.tex | Forme |
+| # | Action | Fichier | Impact | Statut |
+|---|--------|---------|--------|--------|
+| 1 | Fix division par zero c_mean | rpm_bridge_node.py:252 | Bug crash | ✅ DEJA CORRIGE |
+| 2 | Fix EMA bias (pas integration) | ekf_node.py:365 | Bug divergence | ✅ DEJA CORRIGE |
+| 3 | Justifier poids Q dans le TFE | chapters/06_ekf_adaptatif.tex | Rigueur | ✅ FAIT (20/05/2026) |
+| 4 | Documenter parametres empiriques | chapters/06 + annexe_B | Rigueur | ✅ FAIT (20/05/2026) |
+| 5 | Separer resultats banc/vol | chapters/07_resultats.tex | Clarte | ✅ FAIT (20/05/2026) |
+| 6 | Reduire "mot de fin" | chapters/08_conclusion.tex | Forme | ✅ FAIT (20/05/2026) |
 
 ### 3.2 Actions moyen terme (si temps disponible)
 
-| # | Action | Impact |
-|---|--------|--------|
-| 7 | Analyse sensibilite Q_combined | Rigueur |
-| 8 | Fusionner esc_telemetry_node | Architecture |
-| 9 | Ajouter tests unitaires mixer | Robustesse |
-| 10 | Fix dualsense thread exception | Stabilite |
-| 11 | Documenter EMA alpha/timeouts | Maintenabilite |
-| 12 | Valider clock skew ROS2 | Rigueur |
+| # | Action | Impact | Statut |
+|---|--------|--------|--------|
+| 7 | Analyse sensibilite Q_combined | Rigueur | — |
+| 8 | Fusionner esc_telemetry_node | Architecture | ✅ FAIT — topic renomme /drone/esc_alert |
+| 9 | Ajouter tests unitaires mixer | Robustesse | — |
+| 10 | Fix dualsense thread exception | Stabilite | ✅ FAIT (20/05/2026) — logging ajoute |
+| 11 | Documenter EMA alpha/timeouts | Maintenabilite | ✅ FAIT — dans ch.06 tableau parametres |
+| 12 | Valider clock skew ROS2 | Rigueur | — |
 
 ### 3.3 Pour le jour du vol
 
-| # | Action | Criticite |
-|---|--------|-----------|
-| A | **Activer Bidirectional DShot** via BLHeli32 Configurator (Windows) | BLOQUANT |
-| B | Rebrancher cables TELEM1+TELEM2 | Important |
-| C | Calibrer BATT1_V_DIV avec multimetre | Important |
-| D | Test moteurs sol (helices enlevees) | Obligatoire |
-| E | Premier hover 30s STABILIZED | Objectif |
+| # | Action | Criticite | Statut |
+|---|--------|-----------|--------|
+| A | **Activer Bidirectional DShot** via BLHeli32 Configurator (Windows) | BLOQUANT | ⏳ FIRMWARE COMPILE — flasher sur Windows |
+| B | Rebrancher cables TELEM1+TELEM2 | Important | — |
+| C | Calibrer BATT1_V_DIV avec multimetre | Important | — |
+| D | Test moteurs sol (helices enlevees) | Obligatoire | — |
+| E | Premier hover 30s STABILIZED | Objectif | — |
+
+> **Firmware custom PX4 disponible** : `blheli32_windows_guide/px4_fmu-v6c_default.px4`
+> Compilé le 20/05/2026 avec `CONFIG_DRIVERS_BLHELI=y` pour Pix32 v6C.
